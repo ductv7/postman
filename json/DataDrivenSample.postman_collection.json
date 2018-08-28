@@ -1,0 +1,59 @@
+{
+	"info": {
+		"_postman_id": "d522ea32-f88a-4c59-9b8f-ca1a9fc2a5d4",
+		"name": "DataDrivenSample",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Student by Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "bbface4b-8954-4aba-aa1a-b3cb0c854159",
+						"type": "text/javascript",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						]
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "b621c333-7cd4-45e4-8773-99bbab9f817c",
+						"type": "text/javascript",
+						"exec": [
+							"console.log(\"User id will be sent:\" + data.user_id);"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {},
+				"url": {
+					"raw": "http://localhost:8080/student/{{user_id}}",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"student",
+						"{{user_id}}"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
